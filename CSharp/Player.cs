@@ -9,6 +9,10 @@ public enum Player
 
 public static class PlayerExtension
 {
+    public const string CyanEscapeCode = "\u001b[36m";
+    public const string MagentaEscapeCode = "\u001b[35m";
+    public const string ResetEscapeCode = "\u001b[0m";
+
     /// <summary>Gets the next player to use.</summary>
     public static Player NextPlayer(this Player player)
     {
@@ -22,15 +26,28 @@ public static class PlayerExtension
         };
     }
 
-    public static string Icon(this Player player)
+    public static string Icon(this Player player, bool colorize = true)
     {
-        switch (player)
+        var icon = player switch 
         {
-            case Player.Empty: return " ";
-            case Player.X: return "X";
-            case Player.O: return "O";
+            Player.Empty => " ",
+            Player.X => "X",
+            Player.O => "O",
             // Default value
-            default: return " ";
+            _ => " ",
+        };
+
+        // Colorize the output if possible.
+        if (colorize && player != Player.Empty)
+        {
+            return player switch 
+            {
+                Player.X => String.Join("", CyanEscapeCode, icon, ResetEscapeCode),
+                Player.O => String.Join("", MagentaEscapeCode, icon, ResetEscapeCode),
+                _ => icon,
+            };
         }
+
+        return icon;
     }
 }
