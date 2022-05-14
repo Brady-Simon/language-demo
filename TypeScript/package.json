@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "A basic Tic-Tac-Toe game",
-  "main": "index.ts",
+  "main": "./src/index.ts",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
+    "@types/prompt-sync": "^4.1.1",
     "typescript": "^4.6.4"
   }
 }
