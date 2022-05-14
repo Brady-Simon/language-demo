@@ -1,4 +1,4 @@
-import Player from './player.js';
+import Player from './player';
 
 export default class Board {
   /** The values on each of the board. */
