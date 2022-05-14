@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Tic-Tac-Toe!");
+Console.WriteLine("\nTic-Tac-Toe!");
 
 var playing = true;
 while (playing) 
@@ -36,6 +36,9 @@ while (playing)
         player = player.NextPlayer();
     }
 
+    // Don't check for stalemates if the user stopped.
+    if (!playing) break;
+
     // Stalemate reached.
     Console.WriteLine(board);
     Console.WriteLine("Stalemate!");
@@ -49,7 +52,6 @@ while (playing)
     else 
     {
         playing = false;
-        break;
     }
 }
 
@@ -69,6 +71,7 @@ void Play(Board board, Player player)
         // Get the user's input and then try placing the player there.
         var input = Console.ReadLine();
         var isNumber = int.TryParse(input, out int boardIndex);
+
         if (isNumber)
         {
             var didPlay = board.Place(player, boardIndex);
