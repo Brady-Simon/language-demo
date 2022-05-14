@@ -6,7 +6,7 @@ export default class Board {
 
   /**
    * Creates a board.
-   * @param {int[]} board The board to use.
+   * @param {number[]} board The board to usse.
    */
   constructor(board = undefined) {
     this._board = board ?? Board.empty();
@@ -14,7 +14,7 @@ export default class Board {
 
   /**
    * Returns an empty 3x3 board.
-   * @returns {int[]} An empty board.
+   * @returns {number[]} An empty board.
    */
   static empty() {
     return [...Array(9)].map((_) => Player.Empty.value);
@@ -25,7 +25,7 @@ export default class Board {
    * if the index is out of bounds or if a value is already present.
    * @param {Player} player The player who is choosing the `index`.
    * @param {number} index The index on the board being selected.
-   * @returns Whether or not the player was successfully placed.
+   * @returns {boolean} Whether or not the player was successfully placed.
    */
   place(player, index) {
     // Don't place the piece if the index is out of range.
@@ -46,7 +46,7 @@ export default class Board {
   /**
    * Whether or not `player` has a winning pattern.
    * @param {Player} player The potentially winning player to check.
-   * @returns Whether or not the `player` has a winning combination.
+   * @returns {boolean} Whether or not the `player` has a winning combination.
    */
   isWinner(player) {
     // All possible winning patterns.

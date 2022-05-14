@@ -86,7 +86,7 @@ function play(board, player) {
 
 /**
  * Gets input from the user on whether to play again.
- * @returns {Promise<boolean>} Whether the user wants to play again.
+ * @returns {boolean} Whether the user wants to play again.
  */
 function shouldPlayAgain() {
   const input = prompt('Play again? <y|n>: ');

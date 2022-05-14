@@ -55,7 +55,7 @@ export default class Player {
 
       // Colorize using the proper code.
       if (code) {
-        icon = icon = [code, icon, resetEscapeCode].join('');
+        icon = [code, icon, resetEscapeCode].join('');
       }
     }
 
