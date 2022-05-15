@@ -1,6 +1,6 @@
-## JavaScript
+## TypeScript
 
-A Tic-Tac-Toe game written using JS and Node.
+A Tic-Tac-Toe game written using TS and Node.
 
 ### Requirements
 
@@ -10,12 +10,12 @@ Check to see if Node is installed by running `node --version` on the command lin
 
 #### CLI 
 
-1. `cd` into the `JavaScript/` directory.
+1. `cd` into the `TypeScript/` directory.
 2. Install necessary dependencies using `npm i`.
 3. Run the app using `npm start`.
 
 #### VS Code
 
-1. `cd` into the `JavaScript/` directory.
+1. `cd` into the `TypeScript/` directory.
 2. Install necessary dependencies using `npm i`.
-3. Run the app using the `JavaScript` VS Code launch action.
+3. Run the app using the `TypeScript` VS Code launch action.
