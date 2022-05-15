@@ -36,5 +36,12 @@
                 "!**/node_modules/**"
             ]
         },
+        {
+            "name": "Dart",
+            "type": "dart",
+            "request": "launch",
+            "program": "Dart/tic_tac_toe/bin/tic_tac_toe.dart",
+            "console": "terminal"
+        },
     ]
 }
