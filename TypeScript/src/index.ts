@@ -1,5 +1,5 @@
-import Player from './player';
-import Board from './board';
+import Player from './player.js';
+import Board from './board.js';
 import PromptSync from 'prompt-sync';
 
 /** Allows prompts on the command line. */

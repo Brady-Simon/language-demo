@@ -18,21 +18,23 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-        // {
-        //     "name": "JavaScript",
-        //     "type": "node",
-        //     "request": "launch",
-        //     "program": "${workspaceFolder}/JavaScript/index.js",
-        //     "skipFiles": [
-        //         "<node_internals>/**"
-        //     ],
-        // },
         {
             "name": "JavaScript",
             "type": "node-terminal",
             "command": "npm start",
             "request": "launch",
             "cwd": "${workspaceFolder}/JavaScript"
+        },
+        {
+            "name": "TypeScript",
+            "type": "node-terminal",
+            "command": "npm start",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/TypeScript",
+            "outFiles": [
+                "${workspaceFolder}/TypeScript/dist/**/*.js",
+                "!**/node_modules/**"
+            ]
         },
     ]
 }
