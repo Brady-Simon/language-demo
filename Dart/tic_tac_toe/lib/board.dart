@@ -5,7 +5,7 @@ class Board {
   final List<Player> _board;
 
   /// Creates a [Board] with an optional starting [board].
-  /// Defaults to an 3x3 board filled with [Player.empty].
+  /// Defaults to a 3x3 board filled with [Player.empty].
   Board([List<Player>? board]) : _board = board ?? Board.empty();
 
   static List<Player> empty() {
@@ -19,7 +19,7 @@ class Board {
       return false;
     }
 
-    // Winner means the game isn't stalemated.
+    // Winner means the game isn't in a stalemate.
     if (isWinner(Player.X) || isWinner(Player.O)) {
       return false;
     }

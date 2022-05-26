@@ -80,13 +80,13 @@ public class Board {
                     matchesPattern = false;
                 }
             }
-            // Player matched all patterns; return true
+            // Player matched a pattern; return true
             if (matchesPattern) {
                 return true;
             }
         }
 
-        // The value wasn't found in any winning patterns.
+        // The player wasn't found in any winning patterns.
         return false;
     }
 
