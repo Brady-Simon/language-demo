@@ -4,7 +4,11 @@ A Tic-Tac-Toe game written using Python.
 
 ### Requirements
 
+#### Language
 Check to see if Node is installed by running `python --version` on the command line. If the command isn't recognized, then download Python and try the command again.
+
+#### Linting
+If you're using VS Code, then install the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ### Setup
 
