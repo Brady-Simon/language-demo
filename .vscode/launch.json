@@ -44,6 +44,14 @@
             "request": "launch",
             "mainClass": "Java.src.Main",
             "projectName": "language-demo_a3ef7322"
+        },
+        {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/Python",
+            "module": "tic_tac_toe",
+            "justMyCode": true
         }
     ]
 }
