@@ -49,13 +49,7 @@ fn main() {
         println!("{}", board.to_string());
         println!("Stalemate!");
 
-        if should_play_again() {
-            // Restart the game
-            board = Board::new();
-            player = Player::X;
-            continue;
-        } else {
-            playing = false;
+        if !should_play_again() {
             break;
         }
     }
@@ -77,7 +71,7 @@ fn play(board: &mut Board, player: &Player) {
 
         if let Ok(_) = stdin.read_line(&mut input) {
             if let Ok(index) = input.trim().parse::<usize>() {
-                if *board.place(&player, &index) {
+                if board.place(&player, &index) {
                     break;
                 }
             }
