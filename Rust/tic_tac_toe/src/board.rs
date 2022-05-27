@@ -6,23 +6,24 @@ pub(crate) struct Board {
 }
 
 impl Board {
+
     /// Creates an empty 3x3 board.
-    pub fn empty() -> [Player; 9] {
-        [Player::Empty; 9]
+    pub fn new() -> Board {
+        Board { board: [Player::Empty; 9] }
     }
 
-    pub fn is_stalemate(&self) -> &bool {
+    pub fn is_stalemate(&self) -> bool {
         // Still has remaining spaces to play
         if self.board.contains(&Player::Empty) {
-            return &false;
+            return false;
         }
 
         // Winner means the game isn't in a stalemate.
         if self.is_winner(&Player::X) || self.is_winner(&Player::O) {
-            return &false;
+            return false;
         }
 
-        &true
+        true
     }
 
     /// Tries to place `player` at the `index` and returns if player was placed.
@@ -93,6 +94,28 @@ impl Board {
         } else {
             index.to_string()
         }
+    }
+
+    pub fn to_string(&self) -> String {
+        // Go through each horizontal pattern on the board.
+        let horizontal_patterns = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+        ];
+
+        // Build out each line on the board.
+        let mut lines: Vec<String> = Vec::new();
+        for pattern in horizontal_patterns {
+            // Get the values in each pattern
+            let icons = pattern.map(|index| self.icon_at(&index));
+            let line = icons.join(" | ");
+            lines.push(line);
+        }
+
+        // Combine the lines together with newlines.
+        let output = lines.join("\n");
+        output
     }
 
 }
