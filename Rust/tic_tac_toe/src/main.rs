@@ -1,4 +1,5 @@
 mod player;
+mod board;
 
 use crate::player::Player;
 

@@ -10,7 +10,7 @@ Check to see if Rust is installed by running `rustc --version` on the command li
 #### Linting
 If you're using VS Code, then install the [Rust analyzer extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
 
-If you want to be able to debug and step through the program in VS Code, then you may have to install [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb).
+If you want to be able to debug and step through the program in VS Code, then you'll have to install [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb).
 
 ### Setup
 
