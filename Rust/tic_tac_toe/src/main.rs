@@ -1,10 +1,10 @@
-mod player;
-mod board;
-
 use std::io;
 
 use crate::player::Player;
 use crate::board::Board;
+
+mod player;
+mod board;
 
 fn main() {
     println!("Tic-Tac-Toe!");
