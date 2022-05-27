@@ -67,9 +67,7 @@ fn play(board: &mut Board, player: &Player) {
     let error_message = "Invalid value. Pick again.";
 
     // Continue looping until the user picks a value.
-    let mut is_valid_answer = false;
-    while !is_valid_answer {
-
+    loop {
         // Print the current board so the user can see the options.
         println!("{}", board.to_string());
         println!("({}) Pick a spot: ", player.icon(true));
@@ -77,29 +75,15 @@ fn play(board: &mut Board, player: &Player) {
         let mut input = String::new();
         let stdin = io::stdin();
 
-        match stdin.read_line(&mut input) {
-            Ok(_) => {
-                match input.trim().parse::<usize>() {
-                    Ok(index) => {
-                        // Input was parsed as a number.
-                        let i = index as usize;
-                        if *board.place(&player, &i) {
-                            // Player was successfully placed
-                            is_valid_answer = true;
-                            break;
-                        } else {
-                            println!("{error_message}");
-                        }
-                    },
-                    Err(_) => {
-                        println!("{error_message}");
-                    }
+        if let Ok(_) = stdin.read_line(&mut input) {
+            if let Ok(index) = input.trim().parse::<usize>() {
+                if *board.place(&player, &index) {
+                    break;
                 }
-            },
-            Err(_) => {
-                println!("{error_message}");
             }
         }
+
+        println!("{error_message}");
     }
 }
 
