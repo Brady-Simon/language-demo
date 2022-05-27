@@ -52,6 +52,15 @@
             "cwd": "${workspaceFolder}/Python",
             "module": "tic_tac_toe",
             "justMyCode": true
+        },
+        {
+            "name": "Rust",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "rust-build",
+            "cwd": "${workspaceFolder}/Rust/tic_tac_toe",
+            "program": "${workspaceFolder}/Rust/tic_tac_toe/target/debug/tic_tac_toe",
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -36,6 +36,18 @@
                 "${workspaceFolder}/CSharp/CSharp.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "rust-build",
+            "command": "cargo",
+            "options": {
+                "cwd": "${workspaceFolder}/Rust/tic_tac_toe"
+            },
+            "isBuildCommand": true,
+            "type": "process",
+            "args": [
+                "build"
+            ]
         }
     ]
 }
