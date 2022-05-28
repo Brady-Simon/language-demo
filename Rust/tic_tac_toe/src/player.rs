@@ -45,3 +45,23 @@ impl Player {
         return icon;
     }
 }
+
+#[cfg(test)]
+mod tests {
+
+    use super::*;
+
+    #[test]
+    fn next_player() {
+        assert_eq!(Player::X.next_player(), Player::O);
+        assert_eq!(Player::O.next_player(), Player::X);
+        assert_eq!(Player::Empty.next_player(), Player::X);
+    }
+
+    #[test]
+    fn icon() {
+        assert_eq!(Player::X.icon(false), "X");
+        assert_eq!(Player::O.icon(false), "O");
+        assert_eq!(Player::Empty.icon(false), " ");
+    }
+}
