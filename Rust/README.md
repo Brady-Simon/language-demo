@@ -8,7 +8,7 @@ A Tic-Tac-Toe game written using Rust.
 Check to see if Rust is installed by running `rustup --version` on the command line. If the command isn't recognized, then [download Rust](https://rustup.rs/) and try the command again.
 
 #### Linting
-If you're using VS Code, then install the [Rust analyzer extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+If you're using VS Code, then install the [Rust analyzer extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer). The analyzer only works if the `Cargo.toml` file is in the root workspace directory, so you'll have to specifically open the `Rust/tic_tac_toe` project in VS Code if you want to use the analyzer.
 
 If you want to be able to debug and step through the program in VS Code, then you'll have to install [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb).
 
