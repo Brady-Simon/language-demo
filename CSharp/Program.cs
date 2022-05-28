@@ -42,16 +42,10 @@ while (playing)
     // Stalemate reached.
     Console.WriteLine(board);
     Console.WriteLine("Stalemate!");
-    if (ShouldPlayAgain())
+    
+    if (!ShouldPlayAgain())
     {
-        // Restart the game
-        board = new Board();
-        player = Player.X;
-        continue;
-    }
-    else 
-    {
-        playing = false;
+        break;
     }
 }
 

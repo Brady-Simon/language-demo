@@ -44,13 +44,8 @@ void playGame() {
     // Stalemate reached.
     print(board.toString());
     print('Stalemate!');
-    if (_shouldPlayAgain()) {
-      // Restart the game
-      board = Board();
-      player = Player.X;
-      continue;
-    } else {
-      playing = false;
+    if (!_shouldPlayAgain()) {
+      break;
     }
   }
 }

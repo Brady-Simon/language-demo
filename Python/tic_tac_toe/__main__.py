@@ -40,13 +40,9 @@ def playGame():
         # Stalemate reached
         print(board)
         print("Stalemate!")
-        if should_play_again():
-            # Restart the game
-            board = Board()
-            player = Player.X
-            continue
-        else:
-            playing = False
+
+        if not should_play_again():
+            break
 
 
 def play(board: Board, player: Player):

@@ -46,13 +46,9 @@ function main() {
     // Stalemate reached.
     console.log(board.toString());
     console.log('Stalemate!');
-    if (shouldPlayAgain()) {
-      // Restart the game
-      board = new Board();
-      player = Player.X;
-      continue;
-    } else {
-      playing = false;
+    
+    if (!shouldPlayAgain()) {
+      break;
     }
   }
 }

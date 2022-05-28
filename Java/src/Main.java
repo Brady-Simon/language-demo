@@ -44,13 +44,8 @@ public class Main {
             System.out.println(board);
             System.out.println("Stalemate!");
 
-            if (shouldPlayAgain()) {
-                // Restart the game
-                board = new Board();
-                player = Player.X;
-                continue;
-            } else {
-                playing = false;
+            if (!shouldPlayAgain()) {
+                break;
             }
         }
         
