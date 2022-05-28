@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use crate::player::Player;
 
 pub struct Board {
@@ -96,6 +98,7 @@ impl Board {
         }
     }
 
+    /// Returns a string illustrating the current board state.
     pub fn to_string(&self) -> String {
         // Go through each horizontal pattern on the board.
         let horizontal_patterns = [
@@ -118,4 +121,11 @@ impl Board {
         output
     }
 
+}
+
+// Allows printing the board like `println!("{board}")`
+impl Display for Board {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.to_string())
+    }
 }

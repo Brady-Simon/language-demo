@@ -22,7 +22,7 @@ fn main() {
 
             // Check if the player won.
             if board.is_winner(&player) {
-                println!("{}", board.to_string());
+                println!("{board}");
                 println!("Player {} won!", player.icon(true));
 
                 if should_play_again() {
@@ -46,7 +46,7 @@ fn main() {
         }
 
         // Stalemate reached.
-        println!("{}", board.to_string());
+        println!("{board}");
         println!("Stalemate!");
 
         if !should_play_again() {
@@ -63,7 +63,7 @@ fn play(board: &mut Board, player: &Player) {
     // Continue looping until the user picks a value.
     loop {
         // Print the current board so the user can see the options.
-        println!("{}", board.to_string());
+        println!("{board}");
         println!("({}) Pick a spot: ", player.icon(true));
 
         let mut input = String::new();
