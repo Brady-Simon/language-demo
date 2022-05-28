@@ -1,6 +1,6 @@
 use crate::player::Player;
 
-pub(crate) struct Board {
+pub struct Board {
     /// Keeps track of player positions.
     board: [Player; 9],
 }

@@ -1,7 +1,7 @@
 
 /// A Tic-Tac-Toe player.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub(crate) enum Player {
+pub enum Player {
     Empty,
     X,
     O,
