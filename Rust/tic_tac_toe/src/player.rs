@@ -10,7 +10,7 @@ pub enum Player {
 impl Player {
     
     /// Alternate between `Player.X` and `Player.O`.
-    pub(crate) fn next_player(&self) -> Player {
+    pub fn next_player(&self) -> Player {
         if self == &Player::X { 
             Player::O
         } else { 
@@ -23,7 +23,7 @@ impl Player {
     /// 
     /// ### Arguments
     /// * `colorize` - Whether or not to colorize the icon for the terminal.
-    pub(crate) fn icon(&self, colorize: bool) -> String {
+    pub fn icon(&self, colorize: bool) -> String {
         let mut icon: String = match self {
             Player::X => String::from("X"),
             Player::O => String::from("O"),
