@@ -8,10 +8,11 @@ pub struct Board {
 }
 
 impl Board {
-
     /// Creates an empty 3x3 board.
     pub fn new() -> Board {
-        Board { board: [Player::Empty; 9] }
+        Board {
+            board: [Player::Empty; 9],
+        }
     }
 
     pub fn is_stalemate(&self) -> bool {
@@ -29,11 +30,11 @@ impl Board {
     }
 
     /// Tries to place `player` at the `index` and returns if player was placed.
-    /// Cannot be placed when the index is out of bounds or if a value is 
+    /// Cannot be placed when the index is out of bounds or if a value is
     /// already present.
     pub fn place(&mut self, player: &Player, index: &usize) -> bool {
-    // Don't place the piece if the index is out of range.
-        if !self.in_bounds(&index) {
+        // Don't place the piece if the index is out of range.
+        if !self.in_bounds(index) {
             return false;
         }
 
@@ -51,8 +52,7 @@ impl Board {
 
     /// Whether or not `index` is a valid index on this board.
     pub fn in_bounds(&self, index: &usize) -> bool {
-        let is_valid = *index < self.board.len();
-        is_valid
+        *index < self.board.len()
     }
 
     /// Whether or not `player` has a winning pattern.
@@ -91,21 +91,20 @@ impl Board {
 
     /// Gets a string icon for the value on the board at `index`.
     pub fn icon_at(&self, index: &usize) -> String {
-        if self.in_bounds(&index) && self.board[*index] != Player::Empty {
+        if self.in_bounds(index) && self.board[*index] != Player::Empty {
             self.board[*index].icon(true)
         } else {
             index.to_string()
         }
     }
+}
 
+// Allows printing the board like `println!("{board}")`
+impl Display for Board {
     /// Returns a string illustrating the current board state.
-    pub fn to_string(&self) -> String {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         // Go through each horizontal pattern on the board.
-        let horizontal_patterns = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-        ];
+        let horizontal_patterns = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
 
         // Build out each line on the board.
         let mut lines: Vec<String> = Vec::new();
@@ -118,14 +117,6 @@ impl Board {
 
         // Combine the lines together with newlines.
         let output = lines.join("\n");
-        output
-    }
-
-}
-
-// Allows printing the board like `println!("{board}")`
-impl Display for Board {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.to_string())
+        write!(f, "{output}")
     }
 }

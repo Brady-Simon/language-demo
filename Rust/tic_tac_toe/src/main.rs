@@ -1,10 +1,10 @@
 use std::io;
 
-use crate::player::Player;
 use crate::board::Board;
+use crate::player::Player;
 
-mod player;
 mod board;
+mod player;
 
 fn main() {
     println!("Tic-Tac-Toe!");
@@ -53,12 +53,11 @@ fn main() {
             break;
         }
     }
-    
 }
 
 /// Lets `player` choose their spot on the `board`.
 fn play(board: &mut Board, player: &Player) {
-    let error_message = "Invalid value. Pick again.";
+    let invalid_input = "Invalid value. Pick again.";
 
     // Continue looping until the user picks a value.
     loop {
@@ -69,15 +68,15 @@ fn play(board: &mut Board, player: &Player) {
         let mut input = String::new();
         let stdin = io::stdin();
 
-        if let Ok(_) = stdin.read_line(&mut input) {
+        if stdin.read_line(&mut input).is_ok() {
             if let Ok(index) = input.trim().parse::<usize>() {
-                if board.place(&player, &index) {
+                if board.place(player, &index) {
                     break;
                 }
             }
         }
 
-        println!("{error_message}");
+        println!("{invalid_input}");
     }
 }
 
@@ -89,6 +88,5 @@ fn should_play_again() -> bool {
     let stdin = io::stdin();
     _ = stdin.read_line(&mut input);
 
-    let play_again = *input.trim().to_lowercase() == String::from("y");
-    play_again
+    input.trim() == "y"
 }

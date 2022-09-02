@@ -1,4 +1,3 @@
-
 /// A Tic-Tac-Toe player.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Player {
@@ -8,19 +7,18 @@ pub enum Player {
 }
 
 impl Player {
-    
     /// Alternate between `Player.X` and `Player.O`.
     pub fn next_player(&self) -> Player {
-        if self == &Player::X { 
+        if self == &Player::X {
             Player::O
-        } else { 
+        } else {
             Player::X
         }
     }
 
     /// Gets an icon to use for this [Player]. Including `colorize` will add
     /// escape codes for a colorful output when printed on the command line.
-    /// 
+    ///
     /// ### Arguments
     /// * `colorize` - Whether or not to colorize the icon for the terminal.
     pub fn icon(&self, colorize: bool) -> String {
@@ -42,7 +40,7 @@ impl Player {
             }
         }
 
-        return icon;
+        icon
     }
 }
 
