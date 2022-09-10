@@ -61,6 +61,15 @@
             "cwd": "${workspaceFolder}/Rust/tic_tac_toe",
             "program": "${workspaceFolder}/Rust/tic_tac_toe/target/debug/tic_tac_toe",
             "console": "integratedTerminal"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Swift",
+            "program": "${workspaceFolder:language-demo}\\Swift\\.build/debug/TicTacToe",
+            "args": [],
+            "cwd": "${workspaceFolder:language-demo}/Swift",
+            "preLaunchTask": "swift: Build Debug TicTacToe (Swift)"
         }
     ]
 }
