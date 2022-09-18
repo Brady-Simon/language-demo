@@ -22,7 +22,7 @@ impl Player {
     /// ### Arguments
     /// * `colorize` - Whether or not to colorize the icon for the terminal.
     pub fn icon(&self, colorize: bool) -> String {
-        let mut icon: String = match self {
+        let icon: String = match self {
             Player::X => String::from("X"),
             Player::O => String::from("O"),
             _ => String::from(" "),
@@ -33,11 +33,11 @@ impl Player {
             const MAGENTA_ESCAPE_CODE: &str = "\u{001b}[35m";
             const RESET_ESCAPE_CODE: &str = "\u{001b}[0m";
 
-            icon = match self {
+            return match self {
                 Player::X => CYAN_ESCAPE_CODE.to_string() + icon.as_str() + RESET_ESCAPE_CODE,
                 Player::O => MAGENTA_ESCAPE_CODE.to_string() + icon.as_str() + RESET_ESCAPE_CODE,
                 _ => icon,
-            }
+            };
         }
 
         icon

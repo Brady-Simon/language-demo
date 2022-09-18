@@ -32,27 +32,27 @@ impl Board {
     /// Tries to place `player` at the `index` and returns if player was placed.
     /// Cannot be placed when the index is out of bounds or if a value is
     /// already present.
-    pub fn place(&mut self, player: &Player, index: &usize) -> bool {
+    pub fn place(&mut self, player: &Player, index: usize) -> bool {
         // Don't place the piece if the index is out of range.
         if !self.in_bounds(index) {
             return false;
         }
 
         // Must be an empty spot to place.
-        if let Some(existing_player) = self.board.get(*index) {
+        if let Some(existing_player) = self.board.get(index) {
             if existing_player != &Player::Empty {
                 return false;
             }
         }
 
         // Place the player and return true.
-        self.board[*index] = *player;
+        self.board[index] = *player;
         true
     }
 
     /// Whether or not `index` is a valid index on this board.
-    pub fn in_bounds(&self, index: &usize) -> bool {
-        *index < self.board.len()
+    pub fn in_bounds(&self, index: usize) -> bool {
+        index < self.board.len()
     }
 
     /// Whether or not `player` has a winning pattern.
@@ -90,9 +90,9 @@ impl Board {
     }
 
     /// Gets a string icon for the value on the board at `index`.
-    pub fn icon_at(&self, index: &usize) -> String {
-        if self.in_bounds(index) && self.board[*index] != Player::Empty {
-            self.board[*index].icon(true)
+    pub fn icon_at(&self, index: usize) -> String {
+        if self.in_bounds(index) && self.board[index] != Player::Empty {
+            self.board[index].icon(true)
         } else {
             index.to_string()
         }
@@ -110,7 +110,7 @@ impl Display for Board {
         let mut lines: Vec<String> = Vec::new();
         for pattern in horizontal_patterns {
             // Get the values in each pattern
-            let icons = pattern.map(|index| self.icon_at(&index));
+            let icons = pattern.map(|index| self.icon_at(index));
             let line = icons.join(" | ");
             lines.push(line);
         }

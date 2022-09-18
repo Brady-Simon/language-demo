@@ -70,7 +70,7 @@ fn play(board: &mut Board, player: &Player) {
 
         if stdin.read_line(&mut input).is_ok() {
             if let Ok(index) = input.trim().parse::<usize>() {
-                if board.place(player, &index) {
+                if board.place(player, index) {
                     break;
                 }
             }
