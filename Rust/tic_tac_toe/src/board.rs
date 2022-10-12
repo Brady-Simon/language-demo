@@ -15,6 +15,7 @@ impl Board {
         }
     }
 
+    /// Whether or not this board is in a stalemate state.
     pub fn is_stalemate(&self) -> bool {
         // Still has remaining spaces to play
         if self.board.contains(&Player::Empty) {
@@ -22,7 +23,7 @@ impl Board {
         }
 
         // Winner means the game isn't in a stalemate.
-        if self.is_winner(&Player::X) || self.is_winner(&Player::O) {
+        if self.is_winner(Player::X) || self.is_winner(Player::O) {
             return false;
         }
 
@@ -32,7 +33,7 @@ impl Board {
     /// Tries to place `player` at the `index` and returns if player was placed.
     /// Cannot be placed when the index is out of bounds or if a value is
     /// already present.
-    pub fn place(&mut self, player: &Player, index: usize) -> bool {
+    pub fn place(&mut self, player: Player, index: usize) -> bool {
         // Don't place the piece if the index is out of range.
         if !self.in_bounds(index) {
             return false;
@@ -40,13 +41,13 @@ impl Board {
 
         // Must be an empty spot to place.
         if let Some(existing_player) = self.board.get(index) {
-            if existing_player != &Player::Empty {
+            if *existing_player != Player::Empty {
                 return false;
             }
         }
 
         // Place the player and return true.
-        self.board[index] = *player;
+        self.board[index] = player;
         true
     }
 
@@ -56,7 +57,7 @@ impl Board {
     }
 
     /// Whether or not `player` has a winning pattern.
-    pub fn is_winner(&self, player: &Player) -> bool {
+    pub fn is_winner(&self, player: Player) -> bool {
         let winning_patterns = [
             // Horizontal patterns
             [0, 1, 2],
@@ -75,7 +76,7 @@ impl Board {
             let mut matches_pattern = true;
             // See if the player matches all of the pattern.
             for index in pattern {
-                if self.board[index] != *player {
+                if self.board[index] != player {
                     matches_pattern = false;
                 }
             }

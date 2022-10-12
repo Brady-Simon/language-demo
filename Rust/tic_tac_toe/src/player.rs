@@ -9,7 +9,7 @@ pub enum Player {
 impl Player {
     /// Alternate between `Player.X` and `Player.O`.
     pub fn next_player(&self) -> Player {
-        if self == &Player::X {
+        if *self == Player::X {
             Player::O
         } else {
             Player::X
@@ -28,7 +28,7 @@ impl Player {
             _ => String::from(" "),
         };
 
-        if colorize && self != &Player::Empty {
+        if colorize && *self != Player::Empty {
             const CYAN_ESCAPE_CODE: &str = "\u{001b}[36m";
             const MAGENTA_ESCAPE_CODE: &str = "\u{001b}[35m";
             const RESET_ESCAPE_CODE: &str = "\u{001b}[0m";

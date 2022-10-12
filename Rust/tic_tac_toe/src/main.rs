@@ -18,10 +18,10 @@ fn main() {
         // Main game loop
         while !board.is_stalemate() {
             // Let the player choose their spot.
-            play(&mut board, &player);
+            play(&mut board, player);
 
             // Check if the player won.
-            if board.is_winner(&player) {
+            if board.is_winner(player) {
                 println!("{board}");
                 println!("Player {} won!", player.icon(true));
 
@@ -56,7 +56,7 @@ fn main() {
 }
 
 /// Lets `player` choose their spot on the `board`.
-fn play(board: &mut Board, player: &Player) {
+fn play(board: &mut Board, player: Player) {
     let invalid_input = "Invalid value. Pick again.";
 
     // Continue looping until the user picks a value.
