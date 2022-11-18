@@ -6,6 +6,11 @@ pub enum Player {
     O,
 }
 
+// Some constants for colorizing player icons.
+const CYAN_ESCAPE_CODE: &str = "\u{001b}[36m";
+const MAGENTA_ESCAPE_CODE: &str = "\u{001b}[35m";
+const RESET_ESCAPE_CODE: &str = "\u{001b}[0m";
+
 impl Player {
     /// Alternate between `Player.X` and `Player.O`.
     pub fn next_player(&self) -> Player {
@@ -29,10 +34,6 @@ impl Player {
         };
 
         if colorize && *self != Player::Empty {
-            const CYAN_ESCAPE_CODE: &str = "\u{001b}[36m";
-            const MAGENTA_ESCAPE_CODE: &str = "\u{001b}[35m";
-            const RESET_ESCAPE_CODE: &str = "\u{001b}[0m";
-
             return match self {
                 Player::X => CYAN_ESCAPE_CODE.to_string() + icon.as_str() + RESET_ESCAPE_CODE,
                 Player::O => MAGENTA_ESCAPE_CODE.to_string() + icon.as_str() + RESET_ESCAPE_CODE,
@@ -61,5 +62,17 @@ mod tests {
         assert_eq!(Player::X.icon(false), "X");
         assert_eq!(Player::O.icon(false), "O");
         assert_eq!(Player::Empty.icon(false), " ");
+    }
+
+    #[test]
+    fn colorized_x_icon_is_cyan() {
+        assert!(Player::X.icon(true).starts_with(CYAN_ESCAPE_CODE));
+        assert!(Player::X.icon(true).ends_with(RESET_ESCAPE_CODE));
+    }
+
+    #[test]
+    fn colorized_o_icon_is_magenta() {
+        assert!(Player::O.icon(true).starts_with(MAGENTA_ESCAPE_CODE));
+        assert!(Player::O.icon(true).ends_with(RESET_ESCAPE_CODE));
     }
 }

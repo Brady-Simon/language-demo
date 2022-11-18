@@ -100,6 +100,12 @@ impl Board {
     }
 }
 
+impl Default for Board {
+    fn default() -> Self {
+        Board::new()
+    }
+}
+
 // Allows printing the board like `println!("{board}")`
 impl Display for Board {
     /// Returns a string illustrating the current board state.
@@ -119,5 +125,40 @@ impl Display for Board {
         // Combine the lines together with newlines.
         let output = lines.join("\n");
         write!(f, "{output}")
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn board_defaults_to_empty_3x3_grid() {
+        let board = Board::default();
+        assert_eq!(board.board.len(), 9);
+        assert!(board.board.iter().all(|&icon| icon == Player::Empty));
+    }
+
+    #[test]
+    fn returns_true_when_player_is_placed() {
+        let mut board = Board::new();
+        let placed = board.place(Player::X, 0);
+        assert!(placed);
+    }
+
+    #[test]
+    fn places_player_at_correct_index() {
+        let mut board = Board::new();
+        board.place(Player::X, 5);
+        let icon = board.icon_at(5);
+        assert_eq!(icon, Player::X.icon(true));
+    }
+
+    #[test]
+    fn returns_false_when_player_cannot_be_placed() {
+        let mut board = Board::new();
+        board.place(Player::X, 0);
+        let placed = board.place(Player::O, 0);
+        assert!(!placed);
     }
 }
